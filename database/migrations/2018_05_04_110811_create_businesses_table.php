@@ -19,6 +19,7 @@ class CreateBusinessesTable extends Migration
             $table->string('phone');
             $table->string('email')->unique();
             $table->string('slug')->unique();
+            $table->string('logo')->nullable();
             $table->text('about');
             $table->integer('admin_id')->unsigned()->nullable();
             $table->foreign('admin_id')->references('id')->on('users')->onDelete('set null');

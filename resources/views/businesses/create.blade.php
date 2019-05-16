@@ -15,7 +15,7 @@
                         </div>
                     @endif
 
-                    <form method="POST" action="{{ route('my-businesses.store') }}">
+                    <form method="POST" action="{{ route('my-businesses.store') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group row">
                             <label for="name" class="col-sm-4 col-form-label text-md-right">{{ __('Name') }}</label>
@@ -70,6 +70,21 @@
                                 @endif
                             </div>
                         </div>
+
+                        <div class="form-group row">
+                            <label for="logo" class="col-sm-4 col-form-label text-md-right">{{ __('E-Mail') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="logo" type="file" class="form-control{{ $errors->has('logo') ? ' is-invalid' : '' }}" name="logo" value="{{ old('logo') }}">
+
+                                @if ($errors->has('logo'))
+                                    <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('logo') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
